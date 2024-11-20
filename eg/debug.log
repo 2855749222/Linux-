@@ -1,0 +1,7 @@
+2015-01-01 14:01:32 ERROR src/dir.c:12: open dir error
+2024-08-16 21:37:34 ERROR src/dir.c:12: open dir error
+2024-08-16 21:37:37 ERROR src/dir.c:12: open dir error
+2024-08-16 21:37:39 ERROR src/bmp.c:11: open bmp error
+2015-01-01 09:12:46 ERROR src/bmp.c:11: open bmp error
+2015-01-01 09:13:35 ERROR src/bmp.c:11: open bmp error
+2015-01-01 12:53:14 ERROR src/bmp.c:11: open bmp error
