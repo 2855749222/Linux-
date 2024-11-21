@@ -2,7 +2,7 @@
 // 初始化锁
 static pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
 
-// 初始化条件变量
+// 初始化条件变量 
 static pthread_cond_t cond = PTHREAD_COND_INITIALIZER;
 
 void initSnake(int Snakespeed)
@@ -24,6 +24,7 @@ void initSnake(int Snakespeed)
 }
 void addSnakeNode()
 {
+    printf("addSnakeNode");
     newNode = malloc(sizeof(Snake));
     newNode->dir = tail->dir;
 
@@ -121,6 +122,7 @@ void addSnakeNode()
     // 蛇节点个个数加一
     Nodenumb++;
     // printf("%d111111111111111\n", newNode->x);
+     printf("addSnakeNode_finsh\n");
 }
 void clearbrg(int x, int y, int heigth, int width)
 {
@@ -231,13 +233,14 @@ void moveSnake(Snake *Node, int dir)
     }
 }
 void drowfood(int color)
-{
+{  
+    printf("drowfood\n");
     int lcdFd = open("/dev/fb0", O_RDWR);
     if (lcdFd == -1)
-    {
+    { 
         perror("open lcd error");
 
-        return;
+        return; 
     }
     int(*lcd_p)[800] = (int(*)[800])mmap(NULL, 800 * 480 * 4, PROT_READ | PROT_WRITE, MAP_SHARED, lcdFd, 0);
     if (color == WHITE)
@@ -263,10 +266,11 @@ void drowfood(int color)
 
     munmap(lcd_p, 800 * 480 * 4);
     close(lcdFd);
+    printf("drowfood_finish\n");
 }
 void Eatfoot()
 {
-
+    printf("eatfoot\n");
     switch (head->dir)
     {
     case UP:
@@ -279,7 +283,7 @@ void Eatfoot()
             drowfood(WHITE);
             addSnakeNode();
             score++;
-            // 唤醒锁
+            // 唤醒线程
             pthread_cond_signal(&cond);
         }
         break;
@@ -293,7 +297,7 @@ void Eatfoot()
             drowfood(WHITE);
             addSnakeNode();
             score++;
-            // 唤醒锁
+            // 唤醒
             pthread_cond_signal(&cond);
         }
         break;
@@ -307,7 +311,7 @@ void Eatfoot()
             drowfood(WHITE);
             score++;
             addSnakeNode();
-            // 唤醒锁
+            // 唤醒
             pthread_cond_signal(&cond);
         }
         break;
@@ -321,7 +325,7 @@ void Eatfoot()
             drowfood(WHITE);
             addSnakeNode();
             score++;
-            // 唤醒锁
+            // 唤醒
             pthread_cond_signal(&cond);
         }
         break;
@@ -390,12 +394,14 @@ void *create_foot(void *arg)
     while (1)
     {
         // 暂停线程 等待唤醒
-        printf("暂停暂停暂停暂停暂停暂停暂停");
+        printf("暂停暂停暂停暂停暂停暂停暂停\n");
         pthread_cond_wait(&cond, &mutex);
+        printf("醒了醒了\n");
         // 获取食物位置
         generateFoodPosition();
-
+        printf("获取食物位置\n");
         drowfood(YELLOW);
+
         show_score(score);
     }
     // 释放锁
@@ -404,8 +410,10 @@ void *create_foot(void *arg)
 }
 void generateFoodPosition()
 {
+    printf("generateFoodPosition\n");
     srand((unsigned)time(NULL)); // 设置随机数种子
-    int randomNumber_x, randomNumber_y;
+    int randomNumber_x;
+    int randomNumber_y;
     int onSnake;
     do
     {
@@ -425,9 +433,12 @@ void generateFoodPosition()
             temp = temp->next;
         }
     } while (onSnake);
-    printf("rand_x : %d\n", randomNumber_x);
+    printf("nih\n");
     printf("rand_y : %d\n", randomNumber_y);
+    printf("rand_x : %d\n", randomNumber_x);
+   
 
     Food_x = randomNumber_x;
     Food_y = randomNumber_y;
+    printf("generateFoodPosition_finish\n");
 }

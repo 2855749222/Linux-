@@ -55,6 +55,7 @@
         "cstdbool": "c",
         "cstdint": "c",
         "stdint.h": "c",
-        "unnamed_sem_bin_process_condition.C": "cpp"
+        "unnamed_sem_bin_process_condition.C": "cpp",
+        "hello_n.h": "c"
     }
 }

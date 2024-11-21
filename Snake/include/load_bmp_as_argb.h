@@ -5,7 +5,7 @@
 #define UINT  unsigned short
 #define DWORD unsigned  int
 #define LONG unsigned  int
-#define WORD unsigned short
+#define WORD unsigned short 
 
  struct tagBITMAPFILEHEADER
 {

@@ -2,12 +2,12 @@
 
 int ** load_bmp_as_argb(const char *bmp_path)
 {
-     //2、打开图片文件
+     //2、打开图片文件 
     int bmpFd = open(bmp_path, O_RDONLY);
-    if(bmpFd == -1)
+    if(bmpFd == -1)    
     {
-        perror("open bmp error1");
-        return NULL;
+        perror("open bmp error1");  
+        return NULL; 
     }
     //读取文件头 14
     struct tagBITMAPFILEHEADER bfh;

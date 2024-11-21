@@ -1,7 +1,7 @@
 CC := arm-linux-gcc
 CFLAGS := -Wall -O2
 TARGET := main1
-SRCS := main.c fun/show_mmap.c fun/load_bmp_as_argb.c fun/list.c fun/get_touch_index.c fun/show_font.c lib/libfont.a
+SRCS := main.c fun/show_mmap.c fun/load_bmp_as_argb.c fun/show_font.c lib/libfont.a fun/get_touch_index.c fun/liblist.a
 
 
 

@@ -1,6 +1,6 @@
-#include "hello.h"
+#include "main.h"
 
 void main()
 {
-    say_hello();
+    font();
 }

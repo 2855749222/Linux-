@@ -69,7 +69,7 @@ int bit(char *buf, int x, int y)
 
 	// 创建一个画板（点阵图）
 	bitmap *bm = createBitmapWithInit(55, 30, 4, getColor(0, 200, 225, 220));
-
+ 
 	fontPrint(f, bm, 5, 3, buf, getColor(0, 0, 0, 0), 50);
 	show_font_to_lcd(lcd->mp, x, y, bm);
 
